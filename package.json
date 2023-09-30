@@ -1,5 +1,5 @@
 {
-  "name": "vue-documents",
+  "name": "vue-coworkers",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -12,6 +12,7 @@
   "main": "index.js",
   "dependencies": {
     "core-js": "^3.8.3",
+    "vuex": "^4.1.0",
     "vue": "^3.2.13"
   },
   "devDependencies": {
@@ -20,8 +21,11 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint": "^8.50.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "node-sass": "^9.0.0",
+    "sass": "^1.68.0",
+    "sass-loader": "^13.3.2"
   },
   "eslintConfig": {
     "root": true,
@@ -43,7 +47,10 @@
     "not dead",
     "not ie 11"
   ],
-  "_id": "vue-documents@1.0.0",
+  "_id": "vue-coworkers@1.0.0",
   "license": "ISC",
-  "readme": "ERROR: No README data found!"
+  "readme": "ERROR: No README data found!",
+  "engines" : {
+    "node" : ">=18.12.1"
+  }
 }

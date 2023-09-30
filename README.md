@@ -1,24 +1,12 @@
-# vue-documents
+# vue-coworkers
+![screenshot](https://github.com/some-yummy-nick/vue-coworkers/blob/master/coworkers.png)
 
-## Project setup
-```
-yarn install
-```
+[Результат](https://some-yummy-coworkers.onrender.com)
 
-### Compiles and hot-reloads for development
+## Для локальной разработки
 ```
-yarn serve
-```
+требуется установленный на локальной машине node js версии не ниже 18.12
 
-### Compiles and minifies for production
+1. npm i
+2. npm run serve
 ```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

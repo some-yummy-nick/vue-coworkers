@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: $text-color;
+  @include scrollbars();
+}
+
+#app {
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
+  &[disabled]{
+    opacity: 0.5;
+    cursor: initial;
+  }
+}
+
+.reset-btn {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
