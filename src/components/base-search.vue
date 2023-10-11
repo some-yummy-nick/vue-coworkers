@@ -25,7 +25,3 @@ async function handleInput(e) {
   await store.dispatch('setSearch', e.target.value)
 }
 </script>
-
-<style scoped>
-
-</style>

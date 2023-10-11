@@ -12,25 +12,38 @@
 </template>
 
 <script setup>
-import {ref, onMounted, computed} from 'vue'
+import {computed, watch} from 'vue'
 import {useStore} from 'vuex'
 
 import {request} from "@/api";
 import BaseHeader from "@/components/base-header.vue"
 import BaseSidebar from "@/components/base-sidebar.vue"
 import BaseWorker from "@/components/base-worker.vue"
+import {prepareSearch} from "@/use/utils";
 
 const store = useStore()
 const coworkers = computed(() => store.getters.coworkers)
 const overlay = computed(() => store.getters.overlay)
+const search = computed(() => store.getters.search)
 
-let unsubscribe = ref(null)
+watch(search, async () => {
+  if (search.value) {
+    await getCoworkers(search.value)
+  } else {
+    await store.dispatch('setCoworkers', [])
+    await store.dispatch('setWorker', null)
+  }
+})
 
 async function getCoworkers(q) {
   try {
+    const query = prepareSearch(q)
     await store.dispatch('setOverlay', true)
-    const data = await request(`users?id=${q}`);
+    const data = await request(`users${query}`);
     await store.dispatch('setCoworkers', data)
+    if (!data.length) {
+      await store.dispatch('setWorker', null)
+    }
   } catch (e) {
     console.error(e);
     alert(e.message)
@@ -38,18 +51,7 @@ async function getCoworkers(q) {
     await store.dispatch('setOverlay', false)
   }
 }
-onMounted(async () => {
-  unsubscribe.value = store.subscribe(async (mutation, state) => {
-    if (mutation.type === 'setSearch') {
-      if(state.search.search){
-        await getCoworkers(state.search.search)
-      }else {
-        await store.dispatch('setCoworkers', [])
-        await store.dispatch('setWorker', null)
-      }
-    }
-  });
-})
+
 </script>
 
 <style scoped lang="scss">

@@ -6,6 +6,16 @@
       </div>
       <div class="worker__info">
         <h2 class="worker__name small-title">{{ worker.name }}</h2>
+        <div class="worker__lines">
+          <div class="worker__line">
+            <div class="worker__prop">email:&nbsp;</div>
+            <div class="worker__value">{{ worker.email }}</div>
+          </div>
+          <div class="worker__line">
+            <div class="worker__prop">phone:&nbsp;</div>
+            <div class="worker__value">{{ worker.phone }}</div>
+          </div>
+        </div>
         <h2 class="small-title">О себе:</h2>
         <div class="worker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -16,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div v-else class="empty">Выберите документ, чтобы посмотреть его содержимое</div>
+  <div v-else class="empty">Выберите сотрудника, чтобы посмотреть его профиль</div>
 </template>
 
 <script setup>
@@ -36,6 +46,7 @@ const worker = computed(() => store.getters.worker)
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 20px;
   font-size: 14px;
   color: $gray-color;
 }
@@ -61,8 +72,8 @@ const worker = computed(() => store.getters.worker)
     font-weight: 300;
     line-height: 2;
     text-align: center;
-    min-width: 70px;
-    min-height: 70px;
+    min-width: 285px;
+    min-height: 285px;
     object-fit: cover;
 
     &::before {
@@ -79,6 +90,28 @@ const worker = computed(() => store.getters.worker)
       background-repeat: no-repeat;
       background-size: cover;
     }
+  }
+
+  &__lines{
+    margin-bottom: 20px;
+  }
+
+  &__line {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__prop {
+    font-weight: 600;
+    color: $dark-gray;
+  }
+
+  &__value {
+    color: $gray-color;
   }
 
   @media screen and (max-width: $mobile-width) {

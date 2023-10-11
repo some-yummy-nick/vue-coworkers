@@ -1,4 +1,3 @@
-
 export function useDebounce(cb, timeoutMs) {
     let timer
     return (...args) => {
